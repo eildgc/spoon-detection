@@ -24,15 +24,15 @@ while webcam.isOpened():
     # bbox, label, conf = cv.detect_common_objects(frame,confidence=0.01,model='yolov3-tiny')
     bbox, label, conf = cv.detect_common_objects(frame)
 
-    # indices = []
+    indices = []
 
-    # for i, l in enumerate(label):
-    #     if l != "spoon":
-    #         indices.append(i)
-    # for i in sorted(indices, reverse=True):
-    #     del label[i]
-    #     del bbox[i]
-    #     del conf[i]
+    for i, l in enumerate(label):
+        if l != "spoon":
+            indices.append(i)
+    for i in sorted(indices, reverse=True):
+        del label[i]
+        del bbox[i]
+        del conf[i]
 
     # draw bounding box over detected objects
     out = draw_bbox(frame, bbox, label, conf)
